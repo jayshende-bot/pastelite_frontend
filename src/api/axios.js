@@ -1,7 +1,19 @@
 import axios from 'axios';
 
+// During development, Vite's proxy will handle requests to '/api'.
+// For production, we'll use the full URL from the environment variable.
+// Note: Your .env file uses VITE_API_BASE_URL, so we're using that here.
+const API_URL = import.meta.env.DEV ? '/api' : import.meta.env.VITE_API_BASE_URL;
+
+if (!API_URL) {
+  // This check makes the app fail loudly if the environment variable is missing.
+  // It's much better to see a clear error than to have the app silently
+  // try to connect to an incorrect URL.
+  throw new Error("VITE_API_BASE_URL is not defined for production. Please set it in your .env file or hosting environment.");
+}
+
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: API_URL,
 });
 
 /**
