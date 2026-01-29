@@ -5,10 +5,7 @@
       "use": "@vercel/vite"
     }
   ],
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
+  "rewrites": [
     {
       "src": "/.*",
       "dest": "/index.html"
