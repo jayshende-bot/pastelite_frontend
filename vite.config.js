@@ -8,6 +8,5 @@ export default defineConfig({
     outDir: "dist",        // Vercel default expects 'dist'
     emptyOutDir: true,     // Clean 'dist' before building
   },
-  base: "./",      
-  outDir: "dist"        // Relative paths for assets
+  base: "/",
 });
